@@ -91,10 +91,10 @@
   .badge { padding:4px 10px; font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-radius:3px; }
   .badge-bestseller { background:var(--maroon); color:white; }
   .badge-gem { background:var(--gold); color:white; }
-  .card-info { padding:16px 18px 20px; }
+  .card-info { padding:16px 18px 20px; display:flex; flex-direction:column; }
   .card-style-id { font-size:9.5px; letter-spacing:0.18em; color:var(--gold); text-transform:uppercase; margin-bottom:6px; font-weight:600; }
-  .card-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:var(--ink); margin-bottom:12px; line-height:1.35; }
-  .size-chips { display:flex; gap:5px; flex-wrap:wrap; }
+  .card-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:var(--ink); margin-bottom:12px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; height:calc(16px * 1.35 * 4); }
+  .size-chips { display:flex; gap:5px; flex-wrap:wrap; margin-top:auto; }
   .size-chip { padding:3px 9px; border:1px solid var(--border); font-size:10px; color:var(--muted); letter-spacing:0.06em; border-radius:3px; font-weight:600; }
   .modal-backdrop { display:none; position:fixed; inset:0; background:rgba(28,8,8,0.55); z-index:200; align-items:center; justify-content:center; }
   .modal-backdrop.open { display:flex; }
