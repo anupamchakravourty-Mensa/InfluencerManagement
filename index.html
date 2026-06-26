@@ -760,11 +760,25 @@ function openOrderForm() {
   document.getElementById('orderModal').classList.add('open');
 }
 function closeOrderForm() { document.getElementById('orderModal').classList.remove('open'); }
+
+function cleanPhone(raw) {
+  var s = raw.trim().replace(/[\s\-().]/g, '');
+  s = s.replace(/^\+/, '');
+  if (s.length > 10) {
+    if (s.startsWith('971') && s.length === 12) s = s.slice(3);
+    else if (s.startsWith('91') && s.length === 12) s = s.slice(2);
+    else if (s.startsWith('1') && s.length === 11) s = s.slice(1);
+    else s = s.slice(-10);
+  }
+  return s;
+}
 async function submitOrder() {
   const name    = document.getElementById('fieldName').value.trim();
-  const phone   = document.getElementById('fieldPhone').value.trim();
+  const rawPhone= document.getElementById('fieldPhone').value.trim();
   const address = document.getElementById('fieldAddress').value.trim();
-  if (!name || !phone || !address) { showToast('Please fill in all fields'); return; }
+  if (!name || !rawPhone || !address) { showToast('Please fill in all fields'); return; }
+  const phone = cleanPhone(rawPhone);
+  if (phone.length < 7 || phone.length > 15) { showToast('Please enter a valid contact number'); return; }
   const btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = 'Placing order...';
   const payload = {
